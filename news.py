@@ -11,6 +11,13 @@ WHERE log.status LIKE '%200%'
 GROUP BY title, log.path ORDER BY views DESC
 LIMIT 3; '''
 
+query_two = '''SELECT authors.name, count(*) AS views FROM articles
+INNER JOIN authors ON articles.author = authors.id
+INNER JOIN log ON log.path = concat('/article/', articles.slug)
+WHERE log.status LIKE '%200%' 
+GROUP BY authors.name ORDER BY views DESC;
+'''
+
 def db_connection(query):
   """Instantiate PSQL db connection and return db cursor with given query result"""
   db = psycopg2.connect(database=DBNAME)
@@ -26,5 +33,11 @@ def question(query):
     for answer in answers:
         print('\t' + str(answer[0]) + ' - ' + str(answer[1]) + 'views')
 
+  if query == query_two:
+    print('Q2: Who are the most popular article authors of all time?')
+    for answer in answers:
+        print('\t' + str(answer[0]) + ' - ' + str(answer[1]) + 'views')
+
 if __name__ == '__main__':
   question(query_one)
+  question(query_two)
