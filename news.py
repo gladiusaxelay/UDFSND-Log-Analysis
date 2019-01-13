@@ -17,6 +17,13 @@ INNER JOIN log ON log.path = concat('/article/', articles.slug)
 WHERE log.status LIKE '%200%' 
 GROUP BY authors.name ORDER BY views DESC;
 '''
+query_three = '''SELECT * FROM (
+  SELECT date(time), round(100.0*SUM(CASE log.status
+  WHEN '200 OK' THEN 0 ELSE 1 END) / COUNT(log.status),2) 
+  AS perc 
+  FROM log
+  GROUP BY date(time) ORDER BY perc DESC) as subq WHERE perc > 1;
+'''
 
 def db_connection(query):
   """Instantiate PSQL db connection and return db cursor with given query result"""
@@ -38,7 +45,11 @@ def question(query):
   if query == query_two:
     print('Q2: Who are the most popular article authors of all time?')
     print_query(answers, 'views')
+  if query == query_three:
+    print('Q3: On which days did more than 1% of requests lead to errors?')
+    print_query(answers, '% of errors')
 
 if __name__ == '__main__':
   question(query_one)
   question(query_two)
+  question(query_three)
