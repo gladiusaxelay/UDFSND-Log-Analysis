@@ -3,8 +3,8 @@
 This project goal is to create a Python reporting tool that prints out (in plain text) the answer to the below queries based on the data in the database. 
 
 This DB contains:
-*Newspaper articles and their authors, as well as the web server log for the site. 
-*The log has a database row for each time a reader loaded a web page.
+* Newspaper articles and their authors, as well as the web server log for the site. 
+* The log has a database row for each time a reader loaded a web page.
 
 Queries to answer:
 1. What are the most popular three articles of all time? Which articles have been accessed the most? Present this information as a sorted list with the most popular article at the top.
@@ -18,11 +18,11 @@ Queries to answer:
 
 ### Prerequisites
 
-*Unix style terminal
-*Vagrant (VM configuration file available in the repository above)
-*VirtualBox
-*Python
-*newsdata DB from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+* Unix style terminal
+* Vagrant (VM configuration file available in the repository above)
+* VirtualBox
+* Python
+* newsdata DB from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 
 ### Installing
 
