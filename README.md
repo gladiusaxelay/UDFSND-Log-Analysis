@@ -27,8 +27,7 @@ Queries to answer:
 
 ### Installing
 
-Step 1
-
+1. On the repository ```vagrant/``` sub-directory do ```vagrant up```. 
 
 ```
 Example
