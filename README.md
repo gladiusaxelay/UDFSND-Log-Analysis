@@ -11,7 +11,6 @@ Queries to answer:
 2. Who are the most popular article authors of all time? That is, when you sum up all of the articles each author has written, which authors get the most page views? Present this as a sorted list with the most popular author at the top.
 3. On which days did more than 1% of requests lead to errors?
 
-
 ## Getting Started
 
 1. Donwload and install [Vagrant](https://www.vagrantup.com/downloads.html), [VirtualBox](https://www.virtualbox.org/wiki/Downloads), [Python](https://www.python.org/downloads/).
@@ -27,18 +26,10 @@ Queries to answer:
 
 ### Installing
 
-1. On the repository ```vagrant/``` sub-directory do ```vagrant up```. 
-
-```
-Example
-```
-
-Step 2
-
-```
-Example
-```
-
+1. On the repository ```vagrant/``` sub-directory do ```vagrant up```. This will make Vagrant download and install the Linux image and dependencies. It may take a while.
+2. After it finishes, run ```vagrant ssh``` to log in to this newly-installed VM.
+3. Put the ```newsdata.sql``` into the ```vagrant/``` directory, which is shared with your virtual machine.
+4. To load the data, ```cd``` into the ```vagrant``` directory and use the command ```psql -d news -f newsdata.sql```. Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
 
 ## Running the report
 
@@ -65,14 +56,6 @@ Q2: Who are the most popular article authors of all time?
 Q3: On which days did more than 1% of requests lead to errors?
         2016-07-17 - x.xx % of errors
 ```
-
-## Deployment
-
-
-## Built With
-
-* Python
-* 
 
 ## Acknowledgments
 
